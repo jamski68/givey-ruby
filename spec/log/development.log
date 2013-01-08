@@ -1,0 +1,9 @@
+Processing by CharitiesController#index as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 36ms (Views: 36.1ms)
+Processing by CharitiesController#index as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 50ms (Views: 50.2ms)
+Processing by CharitiesController#index as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 33ms (Views: 33.2ms)
