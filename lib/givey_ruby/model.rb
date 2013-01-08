@@ -12,7 +12,7 @@ module GiveyRuby
 
       def access_token
         @access_token  ||= begin
-          if self.givey_token
+          if self.respond_to?(:givey_token) && self.givey_token
             api_token = OAuth2::AccessToken.new(api_client, self.givey_token)
           elsif givey_token = token_from_file
             api_token = OAuth2::AccessToken.new(api_client, givey_token)
