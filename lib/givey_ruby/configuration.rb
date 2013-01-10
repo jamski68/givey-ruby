@@ -7,7 +7,7 @@ module GiveyRuby
         # TODO: ensure consumer key and secret
         @api_site   = client_options.include?(:api_site) ? client_options[:api_site] : "http://api.givey.com"
         opts        = {:site => @api_site, :authorize_url => "/#{api_version}/oauth/authorize", :token_url => "/#{api_version}/oauth/token", :raise_errors => false}
-        @token_file = client_options.include?(:token_file) ? client_options[:token_file] : "#{Rails.root}/tmp/givey_token_file"
+        @token_file = client_options.include?(:token_file) ? client_options[:token_file] : "../tmp/givey_token_file"
         OAuth2::Client.new(client_options[:consumer_key], client_options[:consumer_secret], opts) do |builder|
           # POST/PUT params encoders:
           builder.request :multipart
