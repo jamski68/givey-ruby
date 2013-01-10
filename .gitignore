@@ -5,3 +5,4 @@
 .powenv
 .powrc
 .rvmrc
+*.gem
