@@ -32,6 +32,8 @@ module GiveyRuby
         @access_token  ||= begin
           if session[:access_token]
             api_token               = OAuth2::AccessToken.new(api_client, session[:access_token])
+          elsif ENV['GIVEY_TOKEN']
+            api_token = OAuth2::AccessToken.new(api_client, ENV['GIVEY_TOKEN'])
           elsif givey_token = token_from_file
             api_token = OAuth2::AccessToken.new(api_client, givey_token)
           else
