@@ -2,12 +2,14 @@ require 'spec_helper'
 
 describe GiveyRuby::Model do
 
-  class Charity
-    include GiveyRuby::Model
-  end
+  before(:all) do
+    class Charity
+      include GiveyRuby::Model
+    end
 
-  GiveyRuby.configure do |config|
-    config.client({token_file: "#{SPEC_ROOT}/tmp/givey_token_file"})
+    GiveyRuby.configure do |config|
+      config.client({token_file: "#{SPEC_ROOT}/tmp/givey_token_file"})
+    end
   end
 
   let(:charity) { Charity.new }

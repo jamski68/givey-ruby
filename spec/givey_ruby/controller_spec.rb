@@ -3,12 +3,14 @@ require 'action_controller'
 
 describe GiveyRuby::Controller do
 
-  class CharityController
-    include GiveyRuby::Controller
-  end
+  before(:all) do
+    class CharityController
+      include GiveyRuby::Controller
+    end
 
-  GiveyRuby.configure do |config|
-    config.client({token_file: "#{SPEC_ROOT}/tmp/givey_token_file"})
+    GiveyRuby.configure do |config|
+      config.client({token_file: "#{SPEC_ROOT}/tmp/givey_token_file"})
+    end
   end
 
   let(:charity_controller) { CharityController.new }
@@ -21,6 +23,7 @@ describe GiveyRuby::Controller do
     it "should get new token and update session if it doesn't exist" do
       charity_controller.stub(:session).and_return({})
       charity_controller.stub_chain(:api_client, :client_credentials, :get_token).and_return(api_token)
+      charity_controller.stub(:token_to_file) # Because token_to_file cannot find the file/folder in a full test run
       charity_controller.access_token.should == api_token
       charity_controller.session[:access_token].should == 'udhs7gf7ssg'
     end
