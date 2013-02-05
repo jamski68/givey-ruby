@@ -5,9 +5,10 @@ module GiveyRuby
     def client(client_options = {})
       @client ||= begin
         # TODO: ensure consumer key and secret
-        @api_site   = client_options.include?(:api_site) ? client_options[:api_site] : "http://api.givey.com"
-        opts        = {:site => @api_site, :authorize_url => "/#{api_version}/oauth/authorize", :token_url => "/#{api_version}/oauth/token", :raise_errors => false}
-        @token_file = client_options.include?(:token_file) ? client_options[:token_file] : "../tmp/givey_token_file"
+        @api_site    = client_options.include?(:api_site) ? client_options[:api_site] : "http://api.givey.com"
+        @api_version = client_options.include?(:api_version) ? client_options[:api_version] : "v2"
+        opts         = {:site => @api_site, :authorize_url => "/#{api_version}/oauth/authorize", :token_url => "/#{api_version}/oauth/token", :raise_errors => false}
+        @token_file  = client_options.include?(:token_file) ? client_options[:token_file] : "../tmp/givey_token_file"
         OAuth2::Client.new(client_options[:consumer_key], client_options[:consumer_secret], opts) do |builder|
           # POST/PUT params encoders:
           builder.request :multipart
@@ -17,8 +18,8 @@ module GiveyRuby
       end
     end
 
-    def api_version(version = "v1")
-      @api_version  ||= version
+    def api_version
+      @api_version
     end
 
     def api_site
