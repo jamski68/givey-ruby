@@ -10,6 +10,7 @@ module GiveyRuby
           session[:access_token]  = @access_token.token
           me                      = JSON.parse(@access_token.get("/#{api_version}/me").body)
           session[:user_id]       = me['id']
+          session[:business_id]   = me['business_id']
           return true
         rescue Exception => e
           return false
@@ -22,6 +23,7 @@ module GiveyRuby
           session[:access_token]  = token_string
           me                      = JSON.parse(@access_token.get("/#{api_version}/me").body)
           session[:user_id]       = me['id']
+          session[:business_id]   = me['business_id']
           return true
         rescue Exception => e
           return false
@@ -51,6 +53,7 @@ module GiveyRuby
         access_token.get("/#{api_version}/oauth/revoke")
         session[:access_token]  = nil
         session[:user_id]       = nil
+        session[:business_id]   = nil
       end
 
     end
