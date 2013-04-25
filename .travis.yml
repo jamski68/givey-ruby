@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 2.0.0
+  - 1.9.3
+notifications:
+  flowdock:
+   - secure: "Eon9fjh5mv1PcEGpP7wuMMVHSVslHfzC+JhDl1Y2RWKPvZh3gJwp+QRCTwnM\nUUtYKwbUKmiabQ0rHomnQko24Uf/Rr17SlplYrSz5JdHqaXHrgDUoM0zCOPw\nsGVrHIxhUh/Kmx6UnuT0hEO0YmI/U4nr2GtYJqNgkGK8ORo6OgY="
