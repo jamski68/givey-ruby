@@ -18,7 +18,6 @@ describe GiveyRuby::Configuration do
 
     describe "Session options" do
       it "GiveyRuby configure should set OAuth2 client correctly" do
-        puts GiveyRuby.configuration.inspect
         GiveyRuby.configuration.client.should be_kind_of(OAuth2::Client)
         GiveyRuby.configuration.client.site.should == "http://example.com"
       end
