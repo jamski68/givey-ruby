@@ -7,6 +7,7 @@ module GiveyRuby
       def set_password_token(email, password)
         begin
           @access_token           = api_client.password.get_token(email, password)
+          return false if @access_token.params["error"] == "invalid_grant"
           session[:access_token]  = @access_token.token
           me                      = JSON.parse(@access_token.get("/#{api_version}/me").body)
           session[:user_id]       = me['id']
