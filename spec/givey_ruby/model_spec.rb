@@ -8,7 +8,7 @@ describe GiveyRuby::Model do
     end
 
     GiveyRuby.configure do |config|
-      config.client({token_file: "#{SPEC_ROOT}/tmp/givey_token_file"})
+      config.client({token_file: "#{SPEC_ROOT}/tmp/givey_token_file", consumer_key: "key", consumer_secret: "secret"})
     end
   end
 
