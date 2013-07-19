@@ -4,7 +4,9 @@ module GiveyRuby
 
     def client(client_options = {})
       @client ||= begin
-        # TODO: ensure consumer key and secret
+        if [:consumer_key, :consumer_secret].any? {|k| client_options[k].nil? }
+          raise ArgumentError.new("consumer_key or consumer_secret not specified")
+        end
         @api_site    = client_options.include?(:api_site) ? client_options[:api_site] : "http://api.givey.com"
         @api_version = client_options.include?(:api_version) ? client_options[:api_version] : "v2"
         opts         = {:site => @api_site, :authorize_url => "/#{api_version}/oauth/authorize", :token_url => "/#{api_version}/oauth/token", :raise_errors => false}
