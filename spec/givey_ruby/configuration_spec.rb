@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe GiveyRuby::Configuration do
 
+  after { GiveyRuby::Configuration.instance_variable_set(:@client, nil) }
+
   describe "without necessary configuration parameters" do
     context "without consumer_key" do
       it "raises a ConfigurationError" do
