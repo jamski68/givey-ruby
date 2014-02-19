@@ -18,7 +18,7 @@ describe GiveyRuby::Controller do
 
   describe "access_token" do
 
-    let(:api_token) { stub('api_token', token: 'udhs7gf7ssg') }
+    let(:api_token) { double('api_token', token: 'udhs7gf7ssg') }
 
     it "should get new token and update session if it doesn't exist" do
       charity_controller.stub(:session).and_return({})
@@ -38,7 +38,7 @@ describe GiveyRuby::Controller do
 
   describe "get_token_response" do
 
-    let(:api_token) { stub('api_token', token: 'udhs7gf7ssg') }
+    let(:api_token) { double('api_token', token: 'udhs7gf7ssg') }
 
     it "returns hash for requested URL" do
       charity_controller.should_receive(:session).twice.and_return({access_token: '8h7g6f5fjshd'})

@@ -85,7 +85,7 @@ describe GiveyRuby::Model do
   describe "get_token_response" do
     let(:non_token_charity) { Charity.new }
 
-    let(:api_token) { stub('api_token', token: 'udhs7gf7ssg') }
+    let(:api_token) { double('api_token', token: 'udhs7gf7ssg') }
 
     it "returns hash for requested URL" do
       File.open(GiveyRuby.configuration.token_file, 'w'){|f| f.write('8h7g6f5fjshd') }
